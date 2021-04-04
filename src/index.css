@@ -1,0 +1,14 @@
+legend {
+  text-align: center;
+  margin-bottom: 0.2em;
+  padding: 0 0.5em;
+}
+
+fieldset {
+  border: none;
+  border-top: 1px solid black;
+}
+
+input {
+  margin: 0.3em;
+}

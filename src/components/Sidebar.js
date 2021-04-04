@@ -1,6 +1,6 @@
 const Sidebar = () => {
     return (
-        <div className="sidebar sticky-sidebar pt-1 ">
+        <div className="sidebar sticky-sidebar pt-1">
             <fieldset className="mb-sm">
                 <legend>Sort</legend>
                 <div className="flex flex-col small-text">

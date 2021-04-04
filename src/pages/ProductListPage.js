@@ -1,8 +1,12 @@
+import ProductList from "../components/ProductList";
 import Sidebar from "../components/Sidebar";
 
 const ProductListPage = () => {
     return (
-        <Sidebar />
+        <div className="flex">
+            <Sidebar />
+            <ProductList />
+        </div>
     )
 }
 
