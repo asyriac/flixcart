@@ -6,7 +6,7 @@ export const ProductList = () => {
     const { loading, products } = useProductContext();
 
     return (
-        <div className="card-list">
+        <div className="card-list pt-1">
             {loading && <h1>Loading...</h1>}
             {
                 products.map((product) => <Product key={product.id} item={product} />)

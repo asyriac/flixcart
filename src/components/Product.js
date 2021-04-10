@@ -1,11 +1,17 @@
+import { useCartContext } from "../contexts/cart-context"
+
 const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item }) => {
 
-    const handleAddToCart = (item) => {
+    const { cart, addItemToCart } = useCartContext();
 
+    const handleAddToCart = (item) => {
+        addItemToCart(item);
     }
 
     const isAddedToCart = () => {
-        return "Add to cart"
+        if (cart.find((cartItem) => cartItem.id === id))
+            return <button className="btn btn-primary">Go to cart</button>
+        return <button className="btn btn-primary" onClick={() => handleAddToCart(item)}>Add to cart</button>
     }
 
     return (
@@ -21,7 +27,7 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
                     {inStock ? <span className="">In stock</span> : <span className=" ">Out of stock</span>}
                     {fastDelivery && <span className="mb-md ">Fast delivery</span>}
                 </div>
-                <button className="btn btn-primary" onClick={() => handleAddToCart(item)}>{isAddedToCart()}</button>
+                {isAddedToCart()}
             </div>
         </div>
     )
