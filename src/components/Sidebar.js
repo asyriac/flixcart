@@ -1,15 +1,22 @@
+import { useProductContext } from "../contexts/product-context";
+
 const Sidebar = () => {
+
+
+    const { sortBy, excludeOutOfStock, showFastDeliveryOnly, sortByPrice_LowToHigh, sortByPrice_HighToLow, toggle_OutOfStock, toggle_FastDelivery, clear_Filters } = useProductContext();
+
     return (
         <div className="sidebar sticky-sidebar pt-1">
+            <button className="btn btn-secondary btn-sm mb-1 mt-sm" onClick={clear_Filters}>Clear filters</button>
             <fieldset className="mb-sm">
                 <legend>Sort</legend>
                 <div className="flex flex-col small-text">
                     <label className="pb-sm">
-                        <input type="radio" name="sort" />
+                        <input type="radio" name="sort" onChange={sortByPrice_LowToHigh} checked={sortBy && sortBy === "PRICE_LOW_TO_HIGH"} />
                         Low to high
                     </label>
                     <label className="pb-sm">
-                        <input type="radio" name="sort" />
+                        <input type="radio" name="sort" onChange={sortByPrice_HighToLow} checked={sortBy && sortBy === "PRICE_HIGH_TO_LOW"} />
                         High to low
                     </label>
                 </div>
@@ -18,11 +25,11 @@ const Sidebar = () => {
                 <legend>Filter</legend>
                 <div className="flex flex-col small-text">
                     <label className="pb-sm">
-                        <input type="checkbox" />
+                        <input type="checkbox" onChange={toggle_OutOfStock} checked={excludeOutOfStock} />
                     Exclude out of stock
                 </label>
                     <label className="pb-sm">
-                        <input type="checkbox" />
+                        <input type="checkbox" onChange={toggle_FastDelivery} checked={showFastDeliveryOnly} />
                         Fast delivery only
                     </label>
                 </div>

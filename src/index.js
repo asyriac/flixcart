@@ -6,6 +6,7 @@ import { ProductContextProvider } from './contexts/product-context';
 import setupMockServer from './api/mock-server';
 import { CartContextProdiver } from './contexts/cart-context';
 import { BrowserRouter } from 'react-router-dom';
+import { WishlistProvider } from './contexts/wishlist-context';
 
 setupMockServer();
 
@@ -14,7 +15,9 @@ ReactDOM.render(
     <BrowserRouter>
       <ProductContextProvider>
         <CartContextProdiver>
-          <App />
+          <WishlistProvider>
+            <App />
+          </WishlistProvider>
         </CartContextProdiver>
       </ProductContextProvider>
     </BrowserRouter>

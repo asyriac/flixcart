@@ -4,7 +4,6 @@ import CartItem from "./CartItem";
 const Cart = () => {
 
     const { cart, totalAmount } = useCartContext();
-    console.log(cart);
 
     return (
         <div className=" pt-1 pb-1 container flex">

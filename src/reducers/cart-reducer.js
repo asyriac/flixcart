@@ -1,3 +1,6 @@
+import { addItem } from "../utils/utils"
+
+
 const initialState = {
     cart: [],
     totalQty: 0,
@@ -9,7 +12,8 @@ const cartReducer = (state, action) => {
         case "ADD_TO_CART":
             return {
                 ...state,
-                cart: state.cart.concat({ ...action.payload, qty: 1 })
+                // cart: state.cart.concat({ ...action.payload, qty: 1 })
+                cart: addItem(state.cart, action.payload)
             }
         case "INCREMENT_CART_QTY":
             return {
