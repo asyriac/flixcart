@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { initialState, wishlistReducer } from "../reducers/wishlist-reducer";
 
@@ -8,8 +9,16 @@ const WishlistProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(wishlistReducer, initialState)
 
-    const addToWishlist = (item) => {
-        dispatch({ type: "ADD_TO_WISHLIST", payload: item })
+    const fetchWishlist = async () => {
+        const { data: {wishlist} } = await axios("http://localhost:3300/api/v1/wishlist");
+        console.log(wishlist);
+        dispatch({type: "GET_WISHLIST", payload:wishlist})
+    }
+
+    const addToWishlist = async (item) => {
+        const {data : {data}} = await axios.post(`http://localhost:3300/api/v1/wishlist`, { id : item._id})
+        console.log(data);
+        dispatch({ type: "ADD_TO_WISHLIST", payload: data })
     }
 
     const moveToCart = (item) => {
@@ -17,8 +26,13 @@ const WishlistProvider = ({ children }) => {
     }
 
     const removeFromWishlist = (item) => {
+        axios.delete(`http://localhost:3300/api/v1/wishlist/${item._id}`)
         dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item })
     }
+
+    useEffect(()=> {
+        fetchWishlist();
+    },[])
 
     useEffect(() => {
         dispatch({ type: "CALCULATE_ITEMS_IN_WISHLIST" })

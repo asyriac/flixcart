@@ -9,6 +9,14 @@ const initialState = {
 
 const cartReducer = (state, action) => {
     switch (action.type) {
+
+        case "GET_CART":
+            console.log(action.payload)
+            return{
+                ...state,
+                cart: action.payload
+            }
+
         case "ADD_TO_CART":
             return {
                 ...state,
@@ -19,7 +27,7 @@ const cartReducer = (state, action) => {
             return {
                 ...state,
                 cart: state.cart.map((item) => {
-                    if (item.id === action.payload.id) {
+                    if (item._id === action.payload._id) {
                         return {
                             ...item,
                             qty: item.qty + 1
@@ -32,7 +40,7 @@ const cartReducer = (state, action) => {
             return {
                 ...state,
                 cart: state.cart.map((item) => {
-                    if (item.id === action.payload.id) {
+                    if (item._id === action.payload._id) {
                         if (item.qty > 1)
                             return {
                                 ...item,
@@ -45,11 +53,12 @@ const cartReducer = (state, action) => {
         case "REMOVE_FROM_CART":
             return {
                 ...state,
-                cart: state.cart.filter((item) => item.id !== action.payload.id)
+                cart: state.cart.filter((item) => item._id !== action.payload._id)
             }
         case "GENERATE_TOTAL":
             const { totalQty, totalAmount } = state.cart.reduce((acc, item) => {
-                const { price, qty } = item;
+                const { price } = item.product;
+                const qty = item.qty;
                 return {
                     totalQty: acc.totalQty + qty,
                     totalAmount: acc.totalAmount + price * qty

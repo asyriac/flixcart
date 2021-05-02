@@ -1,6 +1,6 @@
 import { useCartContext } from "../contexts/cart-context";
 
-const CartItem = ({ item: { id, name, image, price, qty }, item }) => {
+const CartItem = ({ item: { _id, product: {name,image,price,inStock,fastDelivery,rating}, qty }, item }) => {
 
     const { incrementCartQty, decrementCartQty, removeFromCart } = useCartContext();
 

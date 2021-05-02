@@ -1,7 +1,7 @@
 import { useCartContext } from "../contexts/cart-context";
 import { useWishlistContext } from "../contexts/wishlist-context";
 
-const WishlistItem = ({ item: { id, name, image, price, qty }, item }) => {
+const WishlistItem = ({ item: { _id, product: {name, image, price} }, item }) => {
 
 
     const { moveToCart, removeFromWishlist } = useWishlistContext();

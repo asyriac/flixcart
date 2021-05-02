@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { initialState, cartReducer } from '../reducers/cart-reducer'
 
@@ -7,21 +8,41 @@ const CartContextProdiver = ({ children }) => {
 
     const [state, dispatch] = useReducer(cartReducer, initialState)
 
-    const addItemToCart = (item) => {
-        dispatch({ type: "ADD_TO_CART", payload: item })
+    const fetchCart = async () => {
+        const { data: {cart} } = await axios("http://localhost:3300/api/v1/cart");
+        console.log(cart);
+        dispatch({ type: "GET_CART", payload: cart })
+    }
+
+    const addItemToCart = async (item) => {
+        const res = await axios.post('http://localhost:3300/api/v1/cart',{
+            id: item._id
+        })
+        dispatch({ type: "ADD_TO_CART", payload: res.data.data })
     }
 
     const incrementCartQty = (item) => {
+        axios.post(`http://localhost:3300/api/v1/cart/${item._id}`,{
+            qty: item.qty + 1
+        })
         dispatch({ type: "INCREMENT_CART_QTY", payload: item })
     }
 
     const decrementCartQty = (item) => {
+        axios.post(`http://localhost:3300/api/v1/cart/${item._id}`,{
+            qty: item.qty - 1
+        })
         dispatch({ type: "DECREMENT_CART_QTY", payload: item })
     }
 
     const removeFromCart = (item) => {
+        axios.delete(`http://localhost:3300/api/v1/cart/${item._id}`)
         dispatch({ type: "REMOVE_FROM_CART", payload: item })
     }
+
+    useEffect(()=> {
+        fetchCart();
+    },[])
 
     useEffect(() => {
         dispatch({ type: "GENERATE_TOTAL" })

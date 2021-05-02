@@ -1,6 +1,10 @@
 export const addItem = (arr, item) => {
-    if (arr.find(element => element.id === item.id) === undefined) {
-        return arr.concat({ ...item, qty: 1 })
-    }
-    return arr;
+    // if (arr.find(element => element.product.id === item.id) === undefined) {
+    //     console.log(arr,item);
+        const res = arr.concat(item);
+        console.log(res);
+        return res;
+    // }
+    // console.log(arr,item);
+    // return arr;
 }

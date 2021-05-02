@@ -6,7 +6,7 @@ const Wishlist = () => {
     return (
         <div className="container pt-1 card-list-h">
             {
-                wishlist.map((item) => <WishlistItem key={item.id} item={item} />)
+                wishlist.map((item) => <WishlistItem key={item._id} item={item} />)
             }
         </div>
     )

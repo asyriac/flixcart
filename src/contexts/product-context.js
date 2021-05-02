@@ -12,7 +12,7 @@ export const ProductContextProvider = ({ children }) => {
 
     const fetchProducts = async () => {
         dispatch({ type: "LOADING" });
-        const { data: { products } } = await axios("/api/products");
+        const { data: {data : {products}} } = await axios("http://localhost:3300/api/v1/products");
         dispatch({ type: "GET_PRODUCTS", payload: products })
     }
 

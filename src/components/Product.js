@@ -12,7 +12,7 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
     const [isAddedToWishlist, setIsAddedToWishlist] = useState(false);
 
     useEffect(() => {
-        if (wishlist.find((wishlistItem) => wishlistItem.id === id)) {
+        if (wishlist.find((wishlistItem) => wishlistItem.product._id === id)) {
             setIsAddedToWishlist(true);
         }
         else
@@ -24,7 +24,7 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
     }
 
     const isAddedToCart = () => {
-        if (cart.find((cartItem) => cartItem.id === id))
+        if (cart.find((cartItem) => cartItem.product._id === id))
             return <button className="btn btn-primary" onClick={() => history.push('/cart')}>Go to cart</button>
         return <button className="btn btn-primary" onClick={() => handleAddToCart(item)}>Add to cart</button>
     }

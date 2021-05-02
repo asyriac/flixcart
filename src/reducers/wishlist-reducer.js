@@ -8,6 +8,11 @@ const initialState = {
 const wishlistReducer = (state, action) => {
     switch (action.type) {
 
+        case "GET_WISHLIST":
+            return {
+                ...state,
+                wishlist: action.payload
+            }
         case "ADD_TO_WISHLIST":
             return {
                 ...state,
@@ -26,7 +31,7 @@ const wishlistReducer = (state, action) => {
         case "REMOVE_FROM_WISHLIST":
             return {
                 ...state,
-                wishlist: state.wishlist.filter((item) => item.id !== action.payload.id)
+                wishlist: state.wishlist.filter((item) => item._id !== action.payload._id)
             }
         default:
             return state

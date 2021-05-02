@@ -8,7 +8,7 @@ import { CartContextProdiver } from './contexts/cart-context';
 import { BrowserRouter } from 'react-router-dom';
 import { WishlistProvider } from './contexts/wishlist-context';
 
-setupMockServer();
+// setupMockServer();
 
 ReactDOM.render(
   <React.StrictMode>
