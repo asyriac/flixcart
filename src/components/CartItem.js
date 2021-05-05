@@ -17,7 +17,7 @@ const CartItem = ({ item: { _id, product: {name,image,price,inStock,fastDelivery
     }
 
     return (
-        <div className="card-h">
+        <div className="card-h bg-white">
             <img className="card-img-h" src={image} alt="" />
             <div className="card-content-h">
                 <div>

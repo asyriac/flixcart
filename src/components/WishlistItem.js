@@ -9,7 +9,7 @@ const WishlistItem = ({ item: { _id, product: {name, image, price} }, item }) =>
 
     const handleMoveToCart = (item) => {
         moveToCart(item);
-        addItemToCart(item)
+        addItemToCart(item.product)
     }
 
     const handleRemoveFromWishlist = (item) => {
@@ -17,7 +17,7 @@ const WishlistItem = ({ item: { _id, product: {name, image, price} }, item }) =>
     }
 
     return (
-        <div className="card-h">
+        <div className="card-h bg-white">
             <img className="card-img-h" src={image} alt="" />
             <div className="card-content-h">
                 <div>

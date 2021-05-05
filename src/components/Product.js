@@ -10,9 +10,9 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
     const history = useHistory();
 
     const [isAddedToWishlist, setIsAddedToWishlist] = useState(false);
-
+    const presentInWishlist = wishlist.find((wishlistItem) => wishlistItem.product._id === id);
     useEffect(() => {
-        if (wishlist.find((wishlistItem) => wishlistItem.product._id === id)) {
+        if (presentInWishlist) {
             setIsAddedToWishlist(true);
         }
         else
@@ -38,11 +38,11 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
     }
 
     return (
-        <div className="card card-shadow">
+        <div className="card">
             <div className="card-img-container">
                 <img className="card-img" src={image} alt={name} />
                 {!isAddedToWishlist && <button className="btn btn-primary btn-icon btn-icon-sm card-img-overlay" onClick={() => handleAddToWishlist(item)}><i className="far fa-heart"></i></button>}
-                {isAddedToWishlist && <button className="btn btn-primary btn-icon btn-icon-sm card-img-overlay" onClick={() => handleRemoveFromWishlist(item)}><i className="fas fa-heart"></i></button>}
+                {isAddedToWishlist && <button className="btn btn-primary btn-icon btn-icon-sm card-img-overlay" onClick={() => handleRemoveFromWishlist(presentInWishlist)}><i className="fas fa-heart"></i></button>}
             </div>
             <div className="card-content">
                 <div className="card-body">

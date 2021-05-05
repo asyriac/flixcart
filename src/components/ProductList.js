@@ -28,7 +28,7 @@ export const ProductList = () => {
     const filteredData = getFilteredData(sortedData, excludeOutOfStock, showFastDeliveryOnly)
 
     return (
-        <div className="card-list pt-1">
+        <div className="card-list row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 pt-1">
             {loading && <h1>Loading...</h1>}
             {
                 filteredData.map((product) => <Product key={product.id} item={product} />)
