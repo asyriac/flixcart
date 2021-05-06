@@ -68,3 +68,14 @@ input {
 .card * {
   cursor: pointer;
 }
+
+.login-container{
+  min-height: 70vh;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.login-form{
+  background: #fff;
+  padding: 50px;
+}

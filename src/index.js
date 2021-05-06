@@ -6,19 +6,22 @@ import { ProductContextProvider } from './contexts/product-context';
 import { CartContextProdiver } from './contexts/cart-context';
 import { BrowserRouter } from 'react-router-dom';
 import { WishlistProvider } from './contexts/wishlist-context';
+import { AuthProvider } from './contexts/auth-context';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ProductContextProvider>
-        <CartContextProdiver>
-          <WishlistProvider>
-            <App />
-          </WishlistProvider>
-        </CartContextProdiver>
-      </ProductContextProvider>
+    <AuthProvider>
+        <ProductContextProvider>
+          <CartContextProdiver>
+            <WishlistProvider>
+              <App />
+            </WishlistProvider>
+          </CartContextProdiver>
+        </ProductContextProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

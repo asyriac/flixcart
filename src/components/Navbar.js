@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/auth-context";
 import { useCartContext } from "../contexts/cart-context";
 import { useWishlistContext } from "../contexts/wishlist-context";
 
@@ -6,6 +7,7 @@ const Navbar = () => {
 
     const { totalQty } = useCartContext();
     const { wishlistQty } = useWishlistContext();
+    const { loggedIn, logoutUser } = useAuth();
 
     return (
         <nav className="nav bg-white sticky">
@@ -25,6 +27,16 @@ const Navbar = () => {
                         <span className="badge-notification">{totalQty}</span>
                     </div>
                 </Link></li>
+                {
+                loggedIn ? 
+                    <li className="nav-link-item" style={{cursor: "pointer"}}  onClick={()=>logoutUser()}>
+                        Logout 
+                    </li>
+                    :
+                    <li className="nav-link-item"><Link to="/login">
+                        Login                    
+                    </Link></li>
+                }   
             </ul>
         </nav>
     )
