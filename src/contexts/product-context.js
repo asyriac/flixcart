@@ -7,6 +7,7 @@ const ProductContext = createContext();
 
 export const ProductContextProvider = ({ children }) => {
 
+    console.log("aabbcc");
     const [state, dispatch] = useReducer(productReducer, initialState)
 
 
@@ -37,6 +38,7 @@ export const ProductContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
+        console.log("loading...");
         fetchProducts();
     }, [])
 

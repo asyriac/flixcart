@@ -11,13 +11,11 @@ const WishlistProvider = ({ children }) => {
 
     const fetchWishlist = async () => {
         const { data: {wishlist} } = await axios(`${process.env.REACT_APP_BACKEND_API}/api/v1/wishlist`);
-        console.log(wishlist);
         dispatch({type: "GET_WISHLIST", payload:wishlist})
     }
 
     const addToWishlist = async (item) => {
         const {data : {data}} = await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/v1/wishlist`, { id : item._id})
-        console.log(data);
         dispatch({ type: "ADD_TO_WISHLIST", payload: data })
     }
 

@@ -5,8 +5,6 @@ export const ProductList = () => {
 
     const { loading, products, sortBy, excludeOutOfStock, showFastDeliveryOnly } = useProductContext();
 
-    console.log(products[0]);
-
     const getSortedData = (products, sortBy) => {
         if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {
             return [...products].sort((a, b) => Number(a.price) - Number(b.price))
@@ -16,7 +14,6 @@ export const ProductList = () => {
             return [...products].sort((a, b) => Number(b.price) - Number(a.price))
         }
 
-        console.log(products)
         return products;
     }
 

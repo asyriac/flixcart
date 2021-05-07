@@ -18,7 +18,7 @@ const CartItem = ({ item: { _id, product: {name,image,price,inStock,fastDelivery
 
     return (
         <div className="card-h bg-white">
-            <img className="card-img-h" src={image} alt="" />
+            <img className="card-img-h" src={image} alt={name} />
             <div className="card-content-h">
                 <div>
                     <h3 className="mb-md">{name}</h3>
@@ -26,9 +26,9 @@ const CartItem = ({ item: { _id, product: {name,image,price,inStock,fastDelivery
                 </div>
                 <div className="card-content-h-buttons">
                     <div className="flex flex-center">
-                        <button className="btn btn-secondary btn-sm" onClick={() => handleIncrementCartQty(item)}>+</button>
-                        <h4 className="px-1">{qty}</h4>
                         <button className="btn btn-secondary btn-sm" onClick={() => handleDecrementCartQty(item)}>-</button>
+                        <h4 className="px-1">{qty}</h4>
+                        <button className="btn btn-secondary btn-sm" onClick={() => handleIncrementCartQty(item)}>+</button>                        
                     </div>
                     <button className="btn btn-danger btn-sm" onClick={() => handleRemoveFromCart(item)}><i className="far fa-trash-alt"></i></button>
                 </div>

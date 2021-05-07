@@ -10,7 +10,6 @@ const CartContextProdiver = ({ children }) => {
 
     const fetchCart = async () => {
         const { data: {cart} } = await axios(`${process.env.REACT_APP_BACKEND_API}/api/v1/cart`);
-        console.log(cart);
         dispatch({ type: "GET_CART", payload: cart })
     }
 

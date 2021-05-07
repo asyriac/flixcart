@@ -19,30 +19,38 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
             setIsAddedToWishlist(false);
     }, [wishlist])
 
-    const handleAddToCart = (item) => {
+    const handleAddToCart = (e,item) => {
+        e.stopPropagation();
         addItemToCart(item);
+    }
+
+    const handleGoToCart = (e) => {
+        e.stopPropagation();
+        history.push('/cart');
     }
 
     const isAddedToCart = () => {
         if (cart.find((cartItem) => cartItem.product._id === id))
-            return <button className="btn btn-primary" onClick={() => history.push('/cart')}>Go to cart</button>
-        return <button className="btn btn-primary" onClick={() => handleAddToCart(item)}>Add to cart</button>
+            return <button className="btn btn-primary" onClick={handleGoToCart}>Go to cart</button>
+        return <button className="btn btn-primary" onClick={(e) => handleAddToCart(e,item)} disabled={!inStock}>Add to cart</button>
     }
 
-    const handleAddToWishlist = (item) => {
+    const handleAddToWishlist = (e,item) => {
+        e.stopPropagation();
         addToWishlist(item)
     }
 
-    const handleRemoveFromWishlist = (item) => {
+    const handleRemoveFromWishlist = (e,item) => {
+        e.stopPropagation();
         removeFromWishlist(item)
     }
 
     return (
-        <div className="card">
+        <div className="card" onClick={()=>history.push(`/product/${id}`)}>
             <div className="card-img-container">
                 <img className="card-img" src={image} alt={name} />
-                {!isAddedToWishlist && <button className="btn btn-primary btn-icon btn-icon-sm card-img-overlay" onClick={() => handleAddToWishlist(item)}><i className="far fa-heart"></i></button>}
-                {isAddedToWishlist && <button className="btn btn-primary btn-icon btn-icon-sm card-img-overlay" onClick={() => handleRemoveFromWishlist(presentInWishlist)}><i className="fas fa-heart"></i></button>}
+                {!isAddedToWishlist && <button className="btn btn-primary btn-icon btn-icon-sm card-img-overlay" onClick={(e) => handleAddToWishlist(e,item)}><i className="far fa-heart"></i></button>}
+                {isAddedToWishlist && <button className="btn btn-primary btn-icon btn-icon-sm card-img-overlay" onClick={(e) => handleRemoveFromWishlist(e,presentInWishlist)}><i className="fas fa-heart"></i></button>}
             </div>
             <div className="card-content">
                 <div className="card-body">
