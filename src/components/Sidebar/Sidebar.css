@@ -1,0 +1,26 @@
+.sidebar-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-btn {
+  display: none;
+}
+@media screen and (max-width: 1020px) {
+  .sidebar {
+    z-index: 3;
+    flex: 1;
+  }
+
+  .sticky {
+    /* position: fixed; */
+  }
+
+  .sticky-sidebar {
+    top: 3.3em;
+  }
+
+  .mobile-btn {
+    display: block;
+  }
+}

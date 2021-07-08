@@ -1,0 +1,17 @@
+.price-details {
+  flex: 0.25;
+  margin-left: 1em;
+  padding: 1em;
+  border: 1px solid #ced4da;
+  height: 160px;
+  position: sticky;
+  top: 5rem;
+  background: white;
+}
+
+@media screen and (max-width: 1020px) {
+  .price-details {
+    margin-top: 1em;
+    margin-left: 0;
+  }
+}

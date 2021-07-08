@@ -17,23 +17,13 @@ input {
   flex: 0.75;
 }
 
-.price-details {
-  flex: 0.25;
-  margin-left: 1em;
-  padding: 1em;
-  border: 1px solid #ced4da;
-  height: 160px;
-  position: sticky;
-  top: 5rem;
-}
-
 .cart-total {
   flex: 1;
 }
 
-
 .card {
   margin: 0;
+  max-width: none;
 }
 
 .row-cols-1 > * {
@@ -69,20 +59,31 @@ input {
   cursor: pointer;
 }
 
-.login-container{
+.login-container {
   min-height: 70vh;
   width: 50%;
   margin: 0 auto;
 }
 
-.login-form{
+.login-form {
   background: #fff;
   padding: 50px;
 }
 
-button[disabled], button[disabled]:hover{
+button[disabled],
+button[disabled]:hover {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
-  cursor:not-allowed
+  cursor: not-allowed;
+}
+
+.my-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.4rem;
+}
+
+.main-content {
+  flex: 1;
 }
