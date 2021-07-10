@@ -1,1 +1,1 @@
-export const API_ENDPOINT = "http://localhost:3300/api/v1";
+export const API_ENDPOINT = "https://flixcart-backend.herokuapp.com/api/v1";
