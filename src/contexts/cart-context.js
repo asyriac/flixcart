@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { initialState, cartReducer } from "../reducers/cart-reducer";
+axios.defaults.withCredentials = true;
 
 const CartContext = createContext();
 
