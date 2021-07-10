@@ -25,7 +25,6 @@ const AuthProvider = ({ children }) => {
     console.log("Fetching current user");
     const response = await authAPI.getCurrentUser();
     if (response.status === 200) {
-      console.log("success");
       dispatch({
         type: "FETCH_CURRENT_USER",
         payload: {
@@ -34,7 +33,6 @@ const AuthProvider = ({ children }) => {
         },
       });
     } else {
-      console.log("Podango");
       dispatch({
         type: "FETCH_CURRENT_USER",
         payload: { isLoggedIn: false },

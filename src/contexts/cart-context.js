@@ -42,14 +42,10 @@ const CartContextProdiver = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchCart();
-  }, []);
-
-  useEffect(() => {
     dispatch({ type: "GENERATE_TOTAL" });
   }, [state.cart]);
 
-  return <CartContext.Provider value={{ ...state, addItemToCart, incrementCartQty, decrementCartQty, removeFromCart }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ ...state, addItemToCart, incrementCartQty, decrementCartQty, removeFromCart, fetchCart }}>{children}</CartContext.Provider>;
 };
 
 const useCartContext = () => useContext(CartContext);

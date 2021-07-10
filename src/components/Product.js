@@ -55,7 +55,7 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
   };
 
   return (
-    <div className="card" onClick={() => history.push(`/product/${id}`)}>
+    <div className="card">
       <div className="card-img-container">
         <img className="card-img" src={image} alt={name} />
         {!isAddedToWishlist && (

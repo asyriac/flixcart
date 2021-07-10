@@ -55,10 +55,6 @@ input {
   }
 }
 
-.card * {
-  cursor: pointer;
-}
-
 .login-container {
   min-height: 70vh;
   width: 50%;

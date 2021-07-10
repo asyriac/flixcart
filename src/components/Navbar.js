@@ -1,14 +1,22 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../contexts/auth-context";
 import { useCartContext } from "../contexts/cart-context";
 import { useWishlistContext } from "../contexts/wishlist-context";
 
 const Navbar = () => {
-  const { totalQty } = useCartContext();
-  const { wishlistQty } = useWishlistContext();
+  const { totalQty, fetchCart } = useCartContext();
+  const { wishlistQty, fetchWishlist } = useWishlistContext();
   const { isLoggedIn, logoutUser } = useAuthContext();
 
   console.log(isLoggedIn);
+
+  useEffect(() => {
+    if (isLoggedIn === true) {
+      fetchCart();
+      fetchWishlist();
+    }
+  }, [isLoggedIn]);
 
   return (
     <nav className="nav bg-white sticky">

@@ -33,14 +33,10 @@ const WishlistProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchWishlist();
-  }, []);
-
-  useEffect(() => {
     dispatch({ type: "CALCULATE_ITEMS_IN_WISHLIST" });
   }, [state.wishlist]);
 
-  return <WishlistContext.Provider value={{ ...state, addToWishlist, moveToCart, removeFromWishlist }}>{children}</WishlistContext.Provider>;
+  return <WishlistContext.Provider value={{ ...state, addToWishlist, moveToCart, removeFromWishlist, fetchWishlist }}>{children}</WishlistContext.Provider>;
 };
 
 const useWishlistContext = () => useContext(WishlistContext);
