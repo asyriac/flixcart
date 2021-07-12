@@ -1,9 +1,16 @@
+import { useHistory } from "react-router-dom";
 import { useCartContext } from "../../contexts/cart-context";
 import CartItem from "../Cart/CartItem";
 import "./Cart.css";
 
 const Cart = () => {
-  const { cart, totalAmount } = useCartContext();
+  const { cart, totalAmount, placeOrder } = useCartContext();
+  const history = useHistory();
+
+  const handlePlaceOrder = () => {
+    placeOrder();
+    history.push("/");
+  };
 
   return (
     <div className=" pt-1 pb-1 container flex products">
@@ -21,7 +28,9 @@ const Cart = () => {
           <h3>Total:</h3>
           <h3>Rs. {totalAmount}</h3>
         </div>
-        <button className="btn btn-primary">Proceed to checkout</button>
+        <button className="btn btn-primary" onClick={handlePlaceOrder}>
+          Checkout
+        </button>
       </div>
     </div>
   );

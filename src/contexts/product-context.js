@@ -5,7 +5,6 @@ axios.defaults.withCredentials = true;
 const ProductContext = createContext();
 
 export const ProductContextProvider = ({ children }) => {
-  console.log("aabbcc");
   const [state, dispatch] = useReducer(productReducer, initialState);
 
   const fetchProducts = async () => {
@@ -14,7 +13,7 @@ export const ProductContextProvider = ({ children }) => {
       data: {
         data: { products },
       },
-    } = await axios(`${process.env.REACT_APP_BACKEND_API}/api/v1/products`);
+    } = await axios(`${process.env.REACT_APP_BACKEND_URL}/api/v1/products`);
     dispatch({ type: "GET_PRODUCTS", payload: products });
   };
 
@@ -39,7 +38,6 @@ export const ProductContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("loading...");
     fetchProducts();
   }, []);
 

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProductContext } from "../contexts/product-context";
 import Product from "./Product";
 import Pagination from "./Pagination/Pagination";
+import Loading from "./Loading/Loading";
 
 export const ProductList = () => {
   const { loading, products, sortBy, excludeOutOfStock, showFastDeliveryOnly } = useProductContext();
@@ -20,6 +21,10 @@ export const ProductList = () => {
     return products;
   };
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [excludeOutOfStock, showFastDeliveryOnly]);
+
   const getFilteredData = (products, excludeOutOfStock) => {
     return products.filter(({ inStock }) => (excludeOutOfStock ? inStock : true)).filter(({ fastDelivery }) => (showFastDeliveryOnly ? fastDelivery : true));
   };
@@ -35,15 +40,16 @@ export const ProductList = () => {
     setCurrentPage(pageNumber);
   };
 
+  if (loading) return <Loading />;
+
   return (
     <div className="main-content">
       <div className="my-grid">
-        {loading && <h1>Loading...</h1>}
         {currentProducts.map((product) => (
           <Product key={product.id} item={product} />
         ))}
       </div>
-      <Pagination postsPerPage={postsPerPage} totalPosts={products.length} paginate={paginate} />
+      <Pagination postsPerPage={postsPerPage} totalPosts={filteredData.length} paginate={paginate} />
     </div>
   );
 };

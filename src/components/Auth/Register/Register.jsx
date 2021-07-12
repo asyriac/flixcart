@@ -19,7 +19,7 @@ const Register = () => {
     registerUser(firstName, lastName, email, username, password);
   };
 
-  console.log(isLoggedIn);
+
 
   if (initialLoading) return <Loading />;
 

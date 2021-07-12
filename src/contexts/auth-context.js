@@ -16,13 +16,11 @@ const AuthProvider = ({ children }) => {
 
   const registerUser = async (firstName, lastName, email, username, password) => {
     const response = await authAPI.registerUser({ firstName, lastName, email, username, password });
-    console.log(response.data);
     if (response.status === 200) dispatch({ type: "REGISTER", payload: { isLoggedIn: true, user: response.data.result } });
     else dispatch({ type: "REGISTER", payload: { isLoggedIn: false } });
   };
 
   const fetchCurrentUser = async () => {
-    console.log("Fetching current user");
     const response = await authAPI.getCurrentUser();
     if (response.status === 200) {
       dispatch({

@@ -6,6 +6,8 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import CartPage from "./pages/CartPage";
 import ProductListPage from "./pages/ProductListPage";
 import WishlistPage from "./pages/WishlistPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <PrivateRoute path="/wishlist" exact component={WishlistPage} />
         <PrivateRoute path="/cart" exact={true} component={CartPage} />
       </Switch>
+      <ToastContainer />
     </div>
   );
 }

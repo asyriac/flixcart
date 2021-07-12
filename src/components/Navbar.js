@@ -9,7 +9,7 @@ const Navbar = () => {
   const { wishlistQty, fetchWishlist } = useWishlistContext();
   const { isLoggedIn, logoutUser } = useAuthContext();
 
-  console.log(isLoggedIn);
+ 
 
   useEffect(() => {
     if (isLoggedIn === true) {
