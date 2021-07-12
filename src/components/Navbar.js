@@ -9,14 +9,12 @@ const Navbar = () => {
   const { wishlistQty, fetchWishlist } = useWishlistContext();
   const { isLoggedIn, logoutUser } = useAuthContext();
 
- 
-
   useEffect(() => {
     if (isLoggedIn === true) {
       fetchCart();
       fetchWishlist();
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <nav className="nav bg-white sticky">

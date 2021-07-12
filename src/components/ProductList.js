@@ -7,7 +7,7 @@ import Loading from "./Loading/Loading";
 export const ProductList = () => {
   const { loading, products, sortBy, excludeOutOfStock, showFastDeliveryOnly } = useProductContext();
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(12);
+  const [postsPerPage] = useState(12);
 
   const getSortedData = (products, sortBy) => {
     if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {

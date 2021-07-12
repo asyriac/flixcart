@@ -16,7 +16,7 @@ const Product = ({ item: { id, name, image, price, inStock, fastDelivery }, item
     if (presentInWishlist) {
       setIsAddedToWishlist(true);
     } else setIsAddedToWishlist(false);
-  }, [wishlist]);
+  }, [wishlist]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleAddToCart = (e, item) => {
     e.stopPropagation();

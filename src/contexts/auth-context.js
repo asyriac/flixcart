@@ -1,5 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
-import { useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { authReducer, initialState } from "../reducers/auth-reducer";
 import { authAPI } from "../services/index";
 

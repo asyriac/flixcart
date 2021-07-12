@@ -1,7 +1,6 @@
 import { Route, Switch } from "react-router";
 import Login from "./components/Auth/Login/Login";
 import RegisterPage from "./pages/RegisterPage";
-import Navbar from "./components/Navbar";
 import { PrivateRoute } from "./components/PrivateRoute";
 import CartPage from "./pages/CartPage";
 import ProductListPage from "./pages/ProductListPage";
