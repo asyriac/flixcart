@@ -49,7 +49,7 @@ export const ProductList = () => {
           <Product key={product.id} item={product} />
         ))}
       </div>
-      <Pagination postsPerPage={postsPerPage} totalPosts={filteredData.length} paginate={paginate} />
+      <Pagination postsPerPage={postsPerPage} totalPosts={filteredData.length} paginate={paginate} currentPage={currentPage} />
     </div>
   );
 };
