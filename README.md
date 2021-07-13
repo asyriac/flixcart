@@ -1,3 +1,3 @@
 # Flixtube - Frontend
 
-An online market place for cinema aficionados.
+Frontend for an online market place for cinema aficionados.
