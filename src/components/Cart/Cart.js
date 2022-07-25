@@ -2,14 +2,16 @@ import { useHistory } from "react-router-dom";
 import { useCartContext } from "../../contexts/cart-context";
 import CartItem from "../Cart/CartItem";
 import "./Cart.css";
+import { displayRazorpay } from "./Payment";
 
 const Cart = () => {
   const { cart, totalAmount, placeOrder } = useCartContext();
   const history = useHistory();
 
   const handlePlaceOrder = () => {
-    placeOrder();
-    history.push("/");
+    setTimeout(() => {
+      displayRazorpay(totalAmount, history);
+    }, 1000);
   };
 
   return (

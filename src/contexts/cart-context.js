@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { toast } from "react-toastify";
 import { initialState, cartReducer } from "../reducers/cart-reducer";
 axios.defaults.withCredentials = true;
 
@@ -45,15 +44,6 @@ const CartContextProdiver = ({ children }) => {
   const placeOrder = () => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/cart/order`);
     dispatch({ type: "PLACE_ORDER" });
-    toast.success("Order placed", {
-      position: "top-right",
-      autoClose: 1800,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
   };
 
   useEffect(() => {
